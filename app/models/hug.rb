@@ -1,0 +1,2 @@
+class Hug < ApplicationRecord
+end
