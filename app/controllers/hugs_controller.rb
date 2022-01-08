@@ -1,6 +1,6 @@
 class HugsController < ApplicationController
-
   def index
+    @hugs = Hug.all
 
   end
 
@@ -23,6 +23,7 @@ class HugsController < ApplicationController
 
   def hug_params
     params.require(:hug).permit(:title, :description, :category, :price, :city, :address)
+
   end
 
 end
