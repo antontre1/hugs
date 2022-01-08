@@ -1,1 +1,13 @@
 // Specific CSS for your home-page
+
+@import '../components/navbar';
+
+$pink: #F78176;
+$red: #C23023;
+$orange: #F53E2C;
+$brown-1: #753D38;
+$brown-2: #751D15;
+
+body {
+  background: $pink;
+}
