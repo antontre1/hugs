@@ -1,15 +1,18 @@
 // Specific CSS for your home-page
 
-@import '../components/navbar';
+@import "../components/navbar";
 
 // color palette
 
-$pink: #F78176;
-$red: #C23023;
-$orange: #F53E2C;
-$brown-1: #753D38;
-$brown-2: #751D15;
+$orange_golden: #C33122;
+$pink_salmon: #F88176;
+$black_coral: #545863;
+$dark_purple: #381D2A;
+$blue_electric: #00E8FC;
+$yellow_maize: #F9C846;
+$turquoise_verdigris: #00AFB9;
+
 
 body {
-  background: $pink;
+  background: $pink_salmon;
 }

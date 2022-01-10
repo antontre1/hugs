@@ -1,7 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
-  $red: #C23023;
-  background: $red;
+  $orange_golden: #C33122;
+  background: $orange_golden;
   margin-bottom: 2em;
 }
 
@@ -14,7 +14,32 @@
   border-radius: 40px;
 }
 
+img#navbarDropdown.avatar.dropdown-toggle {
+  width: 60px;
+}
+
 .navbar-brand {
   font-weight: bolder;
   font-size: 3em;
+}
+
+.navbar-light .navbar-brand {
+  $dark_purple: #381D2A;
+  color: $dark_purple;
+}
+
+.navbar-light .navbar-nav .active > .nav-link {
+  $turquoise_verdigris: #00AFB9;
+  color: $turquoise_verdigris
+}
+.navbar-light .navbar-nav .nav-link  {
+  color: $turquoise_verdigris
+}
+
+a.nav-link {
+  padding-top: 20%;
+}
+
+#home {
+  padding-top: 29%;
 }
