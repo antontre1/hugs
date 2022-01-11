@@ -1,0 +1,7 @@
+<h1>Hug Booking !</h1>
+<%= simple_form_for([@hug, @booking]) do |f| %>
+  <h2> <%= @hug.title %> </h2>
+    <%= f.input :start_date, as: :date, html5: true %>
+    <%= f.input :end_date, as: :date, html5: true %>
+  <%= f.button :submit %>
+<% end %>
