@@ -1,13 +1,9 @@
-
-<h1>COUCOU L'AMI</h1>
-<p>Voici les hugs listés</p>
+<h1>Liste des hugs </h1>
+<p>Voici les hugs créés</p>
 <ul class="list-group">
   <% @hugs.each do |hug| %>
-    <li class="list-group-item"><%= hug.title %></li>
-    <li class="list-group-item"><%= hug.description %></li>
-    <li class="list-group-item"><%= hug.category %></li>
-    <li class="list-group-item"><%= hug.price %></li>
-    <li class="list-group-item"><%= hug.city %></li>
-    <li class="list-group-item"><%= hug.address %></li>
+    <li class="list-group-item"><%= link_to(hug.title, hug_path(hug)) %></li>
   <% end %>
 </ul>
+
+<h2><%= link_to("Create a hug",new_hug_path) %> </h2>
