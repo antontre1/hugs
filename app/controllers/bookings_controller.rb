@@ -9,6 +9,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.hug = @hug
     @booking.user_id = @hug.user_id
+    @booking.status = "planned"
     if @booking.save
       redirect_to root_path
     else
