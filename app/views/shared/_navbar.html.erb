@@ -1,0 +1,35 @@
+<%# navbar %>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top" >
+  <div class="container-fluid">
+    <%= link_to "#", class: "navbar-brand" do %>
+    <%= image_tag "heart_hug.saturation.png" %>
+    <% end %>
+
+    <%= link_to "HUGS ON DEMAND", "#", class: "navbar-brand title"%>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-iconn"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <%= link_to "Bookings", "#", class: "nav-link" %>
+        <li class="nav-item active">
+          <%= link_to "Home", "#", class: "nav-link", id: "home" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Messages", "#", class: "nav-link" %>
+        </li>
+        <li class="nav-item dropdown">
+          <%= image_tag "smiley.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <%# <%= image_tag "https://cdn.pixabay.com/photo/2016/08/31/11/54/user-1633249_960_720.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <%= link_to "Action", "#", class: "dropdown-item" %>
+            <%= link_to "Another action", "#", class: "dropdown-item" %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
