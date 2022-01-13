@@ -1,0 +1,14 @@
+.btn-flat {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $yellow_maize;
+  transition: background 0.3s ease;
+  opacity: 0.87;
+}
+
+.btn-flat:hover {
+  background: $yellow_maize;
+  color: white;
+  opacity: 1;
+}

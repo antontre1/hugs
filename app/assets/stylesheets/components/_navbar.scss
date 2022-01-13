@@ -29,7 +29,6 @@ img#navbarDropdown.avatar.dropdown-toggle {
 }
 
 .navbar-light .navbar-nav .active > .nav-link {
-  // $turquoise_verdigris: #00AFB9;
   color: $turquoise_verdigris;
 }
 .navbar-light .navbar-nav .nav-link  {
@@ -46,4 +45,8 @@ a.nav-link {
 
 #home {
   padding-top: 29%;
+}
+
+#bookings {
+  padding-top: 21.2%;
 }
