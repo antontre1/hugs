@@ -1,20 +1,28 @@
 
-<h1>Page Show du hug</h1>
+<h1>Page of <%= @hug.title%> </h1>
+<h2><%= link_to("Book this hug", hug_path(@hug)) %> </h2>
+
 <ul class="list-group">
-    <li class="list-group-item">Title :<%= @hug.title %></li>
-    <li class="list-group-item">Description :<%= @hug.description %></li>
-    <li class="list-group-item">Category :<%= @hug.category %></li>
-    <li class="list-group-item">User id :<%= @hug.user_id %></li>
-    <li class="list-group-item">Price :<%= @hug.price %></li>
-    <li class="list-group-item">City :<%= @hug.city %></li>
-    <li class="list-group-item">Address :<%= @hug.address %></li>
+    <li class="list-group-item">Title : <%= @hug.title %></li>
+    <li class="list-group-item">Description : <%= @hug.description %></li>
+    <li class="list-group-item">Category : <%= @hug.category %></li>
+    <li class="list-group-item">User id : <%= @hug.user_id %></li>
+    <li class="list-group-item">Price : <%= @hug.price %></li>
+    <li class="list-group-item">City : <%= @hug.city %></li>
+    <li class="list-group-item">Address : <%= @hug.address %></li>
 </ul>
 
-<h2><%= link_to("Book this hug des hugs", hug_path(@hug)) %> </h2>
-
-<%= link_to("Liste des hugs", hugs_path) %>
-
+<%= link_to("Back to hugs' list", hugs_path) %>
 <% if policy(Hug).create? %>
   <%= link_to("Edit hug", edit_hug_path(@hug)) %>
   <%= link_to("Delete", hug_path(@hug), method: :delete, data: { confirm: "Are you sure?" }) %>
 <% end %>
+
+<h3>List of reviews for <%= @hug.title %>  </h3>
+<ul class="list-group">
+  <% @reviews.each do |review| %>
+    <ul> <%= review.evaluation %> - <%= review.description %> </ul>
+    <%= link_to("Destroy review", hug_review_path(@hug.id, review.id), method: :delete, data: { confirm: "Are you sure?" }) %>
+  <% end %>
+</ul>
+<%= link_to("Create a review",new_hug_review_path(@hug))%>
