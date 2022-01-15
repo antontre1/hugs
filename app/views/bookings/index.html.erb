@@ -1,0 +1,9 @@
+<h1>Booking for hug called "<%= @hug.title %>"</h1>
+<p><%= @hug.description %></p>
+<% @bookings.each do |booking| %>
+    <li class="list-group-item">from: <%= booking.start_date %> - to: <%= booking.end_date %>
+      <% if policy(booking).destroy? %>
+        <%= link_to 'Destroy', booking_path(booking), method: :delete %>
+      <% end %>
+    </li>
+<% end %>
