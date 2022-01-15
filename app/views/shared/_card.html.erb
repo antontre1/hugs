@@ -1,11 +1,18 @@
 <div class="card-trip">
-  <img src="https://cdn.pixabay.com/photo/2017/08/07/07/48/sky-2601156_960_720.jpg" />
+  <%= image_tag hug.photo %>
   <div class="card-trip-infos">
     <div>
-      <h2>Hug</h2>
-      <p>Physical and friendly hug!</p>
+      <h2><%= hug.title %></h2>
+      <p><%= hug.description %></p>
     </div>
-    <h2 class="card-trip-pricing">£9.99</h2>
+    <h2 class="card-trip-evaluation">
+      <%  if hug.reviews == [] %>
+        <%= "not evaluated yet!" %>
+        <% else %>
+        <%= "see evalutaion" %>
+      <% end %>
+      <a href= <%= hug_path(hug) %> >See details</a>
+    </h2>
     <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
   </div>
 </div>

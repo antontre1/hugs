@@ -13,6 +13,7 @@ Booking.destroy_all
 Hug.destroy_all
 Review.destroy_all
 
+require "open-uri"
 # config locales for Faker (mainly for addresses in fact)
 Faker::Config.locale = 'fr'
 
@@ -25,7 +26,10 @@ Faker::Config.locale = 'fr'
 # Create hugs
 users = User.all
 10.times {
-  new_hug = Hug.new(user_id: users.sample.id, title: Faker::Fantasy::Tolkien.location ,category: "#{Faker::Emotion.adjective}", description: Faker::Fantasy::Tolkien.poem, city: Faker::Address.city, address: Faker::Address.full_address, price: (2..25).to_a.sample )
+  file = URI.open('https://picsum.photos/200/300')
+  fake_cat = Faker::Emotion.adjective
+  new_hug = Hug.new(user_id: users.sample.id, title: Faker::Fantasy::Tolkien.location ,category: fake_cat, description: Faker::Fantasy::Tolkien.poem, city: Faker::Address.city, address: Faker::Address.full_address, price: (2..25).to_a.sample )
+  new_hug.photo.attach(io: file, filename: "#{fake_cat}-pict.jpg", content_type: 'image/jpg')
   new_hug.save
 }
 
