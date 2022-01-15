@@ -5,7 +5,7 @@ class HugPolicy < ApplicationPolicy
     end
   end
 
-  def index?
+  def show?
     true
   end
 end
