@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
     @review.hug_id = @hug.id
     authorize @review
     if @review.save
-      redirect_to hug_reviews_path
+      redirect_to hug_path(@hug)
     else
       render :new
     end
@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
     @hug = Hug.find(params[:hug_id])
     @review.destroy
     authorize @review
-    redirect_to hugs_path(@hug)
+    redirect_to hug_path(@hug)
   end
 
   def show
