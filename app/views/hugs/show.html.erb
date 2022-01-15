@@ -5,7 +5,7 @@
 <ul class="list-group">
     <%# Active Storage  %>
     <%# Displaying image%>
-    <%= cl_image_tag @hug.photo, height: 300, width: 400, class: "hug_img" %>
+    <%= cl_image_tag @hug.photo.key, height: 300, width: 400, class: "hug_img" %>
     <li class="list-group-item">Title :<%= @hug.title %></li>
     <li class="list-group-item">Description :<%= @hug.description %></li>
     <li class="list-group-item">Category :<%= @hug.category %></li>
