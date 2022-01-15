@@ -17,16 +17,8 @@ class ReviewPolicy < ApplicationPolicy
     true
   end
 
-  def update?
-    true
-  end
-
-  def edit?
-    update?
-  end
-
   def destroy?
-    true
+    record.user == user
   end
 
 end

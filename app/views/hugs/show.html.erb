@@ -26,8 +26,7 @@
 <h3>List of reviews for <%= @hug.title %>  </h3>
 <ul class="list-group">
   <% @reviews.each do |review| %>
-    <ul> <%= review.evaluation %> - <%= review.description %> </ul>
-    <%= link_to("Destroy review", hug_review_path(@hug.id, review.id), method: :delete, data: { confirm: "Are you sure?" }) %>
+    <ul> <%= review.evaluation %> - <%= review.description %> - <%= link_to("Destroy review")%> </ul>
   <% end %>
 </ul>
 <%= link_to("Create a review",new_hug_review_path(@hug))%>

@@ -1,9 +1,10 @@
-<h1>Liste des hugs </h1>
-<p>Voici les hugs créés</p>
+<h1>Hugs' list </h1>
+<p>This is the list of hugs created</p>
 <ul class="list-group">
   <% @hugs.each do |hug| %>
-    <li class="list-group-item"><%= link_to(hug.title, hug_path(hug)) %></li>
+    <li class="list-group-item"><%= link_to(hug.title, hug_path(hug)) %> - Category : <%= hug.category %> - <%= hug.description %> - <%= link_to("Edit", edit_hug_path(hug)) %> - <%= link_to("Destroy", hug_path(hug), method: :delete, data: { confirm: "Are you sure?" }) %></li>
   <% end %>
 </ul>
 
-<h2><%= link_to("Create a hug",new_hug_path) %> </h2>
+<p>
+<%= link_to("Create a hug",new_hug_path) %> --- <%= link_to("Back to main page",root_path) %> </p>

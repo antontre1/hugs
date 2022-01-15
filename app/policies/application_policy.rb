@@ -16,6 +16,10 @@ class ApplicationPolicy
     true
   end
 
+  def index?
+    create?
+  end
+
   def new?
     create?
   end
