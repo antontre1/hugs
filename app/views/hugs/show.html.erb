@@ -17,6 +17,7 @@
 
 <%= link_to("Liste des hugs", hugs_path) %>
 
+
 <% if policy(Hug).create? %>
   <%= link_to("Edit hug", edit_hug_path(@hug)) %>
   <%= link_to("Delete", hug_path(@hug), method: :delete, data: { confirm: "Are you sure?" }) %>
