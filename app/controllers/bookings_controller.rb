@@ -25,6 +25,12 @@ class BookingsController < ApplicationController
     policy_scope(Booking)
   end
 
+  def index_user
+    @user = current_user
+    @bookings = @user.bookings
+    policy_scope(Booking)
+  end
+
   def destroy
     @booking = Booking.find(params[:id])
     hug_id = @booking.hug.id

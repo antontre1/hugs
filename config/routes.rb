@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     resources :reviews, only: [ :index, :new, :show, :create, :destroy ]
   end
   resources :bookings, only: [:destroy]
+  get "my_bookings", to: "bookings#index_user", as: :index_user
 end
