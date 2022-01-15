@@ -9,18 +9,18 @@ class ApplicationPolicy
   end
 
   def show?
-    false
+    true
   end
 
   def create?
     true
   end
 
-  def index?
+  def new?
     create?
   end
 
-  def new?
+  def index?
     create?
   end
 

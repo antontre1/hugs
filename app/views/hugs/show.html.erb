@@ -1,6 +1,7 @@
+<h1> <%= @hug.title %> </h1>
 
+<h2><%= link_to("Book this hug", new_hug_booking_path(@hug)) %> </h2>
 
-<h1>Hug </h1>
 <ul class="list-group">
     <%# Active Storage  %>
     <%# Displaying image%>
@@ -14,19 +15,33 @@
     <li class="list-group-item">Address :<%= @hug.address %></li>
 </ul>
 
-<h2><%= link_to("Book this hug des hugs", hug_path(@hug)) %> </h2>
-
-<%= link_to("Liste des hugs", hugs_path) %>
-
-<% if policy(Hug).create? %>
-  <%= link_to("Edit hug", edit_hug_path(@hug)) %>
-  <%= link_to("Delete", hug_path(@hug), method: :delete, data: { confirm: "Are you sure?" }) %>
+<%= link_to("Back to hugs' list", hugs_path) %>
+<% if policy(@hug).edit? %>
+<p>It's you hug : you can :
+  <%= link_to("Edit it", edit_hug_path(@hug)) %>
 <% end %>
+<% if policy(@hug).destroy? %>
+  <%= link_to("Destroy it", hug_path(@hug), method: :delete, data: { confirm: "Are you sure?" }) %>
+<% end %>
+</p>
 
-<h3>List of reviews for <%= @hug.title %>  </h3>
+<h3>List of bookings for <%= @hug.title %> - <%= link_to("Book this hug", new_hug_booking_path(@hug)) %>  </h3>
 <ul class="list-group">
-  <% @reviews.each do |review| %>
-    <ul> <%= review.evaluation %> - <%= review.description %> - <%= link_to("Destroy review")%> </ul>
+  <% @bookings.each do |booking| %>
+    <ul> Pris du <%= booking.start_date %> au <%= booking.end_date %>
+      <% if policy(booking).destroy? %>
+        <%= link_to("It's your booking - You can cancel", hug_bookings_path(@hug), method: :delete, data: { confirm: "Are you sure?" }) %>
+      <% end %>
+    </ul>
   <% end %>
 </ul>
-<%= link_to("Create a review",new_hug_review_path(@hug))%>
+
+<h3>List of reviews for <%= @hug.title %> - <%= link_to("Create a new review",new_hug_review_path(@hug))%> </h3>
+<ul class="list-group">
+  <% @reviews.each do |review| %>
+    <ul> <%= review.evaluation %> - <%= review.description %>
+      <% if policy(review).destroy? %> <%= link_to("It's your review - You can delete it", hug_review_path(review),  method: :delete, data: { confirm: "Are you sure?" }) %>
+      <% end %>
+    </ul>
+  <% end %>
+</ul>

@@ -2,7 +2,13 @@
 <p>This is the list of hugs created</p>
 <ul class="list-group">
   <% @hugs.each do |hug| %>
-    <li class="list-group-item"><%= link_to(hug.title, hug_path(hug)) %> - Category : <%= hug.category %> - <%= hug.description %> - <%= link_to("Edit", edit_hug_path(hug)) %> - <%= link_to("Destroy", hug_path(hug), method: :delete, data: { confirm: "Are you sure?" }) %></li>
+    <li class="list-group-item"><%= link_to(hug.title, hug_path(hug)) %> - Category : <%= hug.category %> - <%= hug.description %>
+    <% if policy(hug).edit? %>
+      <%= link_to("Edit", edit_hug_path(hug)) %>
+    <% end %>
+    <% if policy(hug).destroy? %>
+      <%= link_to("Destroy", hug_path(hug), method: :delete, data: { confirm: "Are you sure?" }) %>
+    <% end %></li>
   <% end %>
 </ul>
 

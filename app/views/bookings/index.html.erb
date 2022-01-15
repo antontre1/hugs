@@ -1,4 +1,4 @@
-<h1>Booking for hug called "<%= @hug.title %>"</h1>
+<h1>Here are update remaining booking for hug called "<%= @hug.title %>"</h1>
 <p><%= @hug.description %></p>
 <% @bookings.each do |booking| %>
     <li class="list-group-item">from: <%= booking.start_date %> - to: <%= booking.end_date %>
@@ -7,3 +7,5 @@
       <% end %>
     </li>
 <% end %>
+
+<h3>  <%= link_to 'Back to the hug page', hug_path(@hug) %> </h3>
