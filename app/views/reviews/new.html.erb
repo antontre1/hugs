@@ -1,0 +1,7 @@
+<h1>Review creation !</h1>
+<%= simple_form_for([@hug, @review]) do |f| %>
+  <h2> <%= @review.hug_id %> </h2>
+    <%= f.input :evaluation %>
+    <%= f.input :description %>
+  <%= f.button :submit %>
+<% end %>

@@ -1,4 +1,5 @@
 
+
 <h1>Hug </h1>
 <ul class="list-group">
     <%# Active Storage  %>
@@ -17,8 +18,16 @@
 
 <%= link_to("Liste des hugs", hugs_path) %>
 
-
 <% if policy(Hug).create? %>
   <%= link_to("Edit hug", edit_hug_path(@hug)) %>
   <%= link_to("Delete", hug_path(@hug), method: :delete, data: { confirm: "Are you sure?" }) %>
 <% end %>
+
+<h3>List of reviews for <%= @hug.title %>  </h3>
+<ul class="list-group">
+  <% @reviews.each do |review| %>
+    <ul> <%= review.evaluation %> - <%= review.description %> </ul>
+    <%= link_to("Destroy review", hug_review_path(@hug.id, review.id), method: :delete, data: { confirm: "Are you sure?" }) %>
+  <% end %>
+</ul>
+<%= link_to("Create a review",new_hug_review_path(@hug))%>

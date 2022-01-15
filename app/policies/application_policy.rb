@@ -9,7 +9,7 @@ class ApplicationPolicy
   end
 
   def show?
-    true
+    false
   end
 
   def create?
