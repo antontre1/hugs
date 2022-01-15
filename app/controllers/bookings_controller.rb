@@ -13,7 +13,7 @@ class BookingsController < ApplicationController
     @booking.status = "planned"
     authorize @booking
     if @booking.save
-      redirect_to root_path
+      redirect_to hug_path(@hug)
     else
       render :new
     end
@@ -25,12 +25,18 @@ class BookingsController < ApplicationController
     policy_scope(Booking)
   end
 
+  def index_user
+    @user = current_user
+    @bookings = @user.bookings
+    policy_scope(Booking)
+  end
+
   def destroy
     @booking = Booking.find(params[:id])
     hug_id = @booking.hug.id
     authorize @booking
     @booking.destroy
-    redirect_to hug_bookings_path(hug_id)
+    redirect_to hug_path(hug_id)
   end
 
 

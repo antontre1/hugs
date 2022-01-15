@@ -5,20 +5,8 @@ class ReviewPolicy < ApplicationPolicy
     end
   end
 
-  def new?
-    create?
-  end
-
-  def show?
-    true
-  end
-
-  def create?
-    true
-  end
-
   def destroy?
-    record.user == user
+    record.hug.user == user
   end
 
 end

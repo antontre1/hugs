@@ -1,6 +1,6 @@
 class HugsController < ApplicationController
   def index
-    @hugs = policy_scope(Hug.all)
+    @hugs = policy_scope(Hug)
   end
 
   def create
@@ -21,8 +21,8 @@ class HugsController < ApplicationController
 
   def show
     @hug = Hug.find(params[:id])
-    @reviews = policy_scope(Review.all)
-    #@review_hug = @reviews.map { |review| " #{review.hug_id}='#{@hug.id}'" }
+    @reviews = @hug.reviews
+    @bookings = @hug.bookings
     authorize @hug
   end
 

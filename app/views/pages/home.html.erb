@@ -3,9 +3,10 @@
 <div class="container">
   <h2>What hug will you choose?</h2>
   <div class="card-container">
-    <%= render "shared/card" %>
-    <%= render "shared/card" %>
-    <%= render "shared/card" %>
+    <% @hugs.each do |hug|%>
+      <%= render partial: "shared/card", locals: {hug: hug} %>
+    <% end %>
+    hello
   </div>
   <h4>Learn about the benefits of hugging.</h4>
   <p>
