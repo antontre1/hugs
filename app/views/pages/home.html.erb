@@ -1,8 +1,8 @@
 <%= render "shared/banner" %>
 
 <div class="container">
- <%= link_to "What hug will you choose?", hugs_path, class: "nav-link", id: "hug" %>
 
+  <%= link_to "What hug will you choose?", hugs_path, class: "nav-link", id: "hug" %>
 
   <div class="card-container">
     <% @hugs.each do |hug|%>
