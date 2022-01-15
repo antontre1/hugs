@@ -4,4 +4,13 @@ class HugPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def edit?
+    user == record.user
+  end
+
+  def destroy?
+    record.user == user
+  end
+
 end

@@ -7,3 +7,7 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
+
+.div-wrapper {
+  min-height: calc(100vh - 100px - 100px);
+}
