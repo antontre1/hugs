@@ -3,5 +3,11 @@ class PagesController < ApplicationController
 
   def home
     @hugs = policy_scope(Hug.all)
+    @markers = @hugs.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
+    end
   end
 end

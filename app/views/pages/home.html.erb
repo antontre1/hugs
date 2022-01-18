@@ -4,14 +4,18 @@
 
   <%= link_to "What hug will you choose?", hugs_path, class: "nav-link", id: "hug" %>
 
+  <div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
   <div class="card-container">
     <% @hugs.each do |hug|%>
       <%= render partial: "shared/card", locals: {hug: hug} %>
     <% end %>
-
   </div>
   <h4>Learn about the benefits of hugging.</h4>
   <p>
-  <a href="https://www.medicinenet.com/how_do_hugs_make_you_feel/article.html" target="_blank"> Un article sur le sujet</a>
+    <a href="https://www.medicinenet.com/how_do_hugs_make_you_feel/article.html" target="_blank"> Un article sur le sujet</a>
   </p>
 </div>
