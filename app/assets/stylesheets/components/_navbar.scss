@@ -1,6 +1,66 @@
+// .navbar-lewagon {
+//   justify-content: space-between;
+//   background: $orange_golden;
+// }
+
+// .navbar-lewagon .navbar-collapse {
+//   flex-grow: 0;
+// }
+
+// .navbar-lewagon .navbar-brand img {
+//   width: 60px;
+//   border-radius: 40px;
+// }
+
+// img#navbarDropdown.avatar.dropdown-toggle {
+//   width: 60px;
+// }
+
+// .navbar-brand {
+//   font-weight: bolder;
+//   font-size: 3em;
+// }
+
+// .navbar-light .navbar-brand {
+//   font-family: $navbar-title-font;
+//   $dark_purple: #381D2A;
+//   color: $dark_purple;
+// }
+
+// .navbar-light .navbar-nav .active > .nav-link {
+//   color: $turquoise_verdigris;
+// }
+// .navbar-light .navbar-nav .nav-link  {
+//   color: $turquoise_verdigris;
+// }
+
+// .navbar-nav {
+//   display: flex;
+// }
+
+// a.nav-link {
+//   padding-top: 20%;
+// }
+
+// #home {
+//   padding-top: 26%;
+// }
+
+// #hug {
+//   padding-top: 28.5%;
+// }
+
+// // #bookings {
+// //   padding-top: 21.2%;
+// // }
+
+// // .title {
+// //   padding-left: 3.5em;
+// // }
+
 .navbar-lewagon {
   justify-content: space-between;
-  background: $orange_golden;
+  background: #E6EBE0;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,52 +68,29 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 60px;
-  border-radius: 40px;
+  width: 40px;
 }
 
-img#navbarDropdown.avatar.dropdown-toggle {
-  width: 60px;
+.navbar-lewagon .navbar-brand img {
+  border-radius: 40px;
+  margin-right: 10px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: black;
 }
 
 .navbar-brand {
-  font-weight: bolder;
-  font-size: 3em;
-}
-
-.navbar-light .navbar-brand {
-  font-family: $navbar-title-font;
-  $dark_purple: #381D2A;
-  color: $dark_purple;
-}
-
-.navbar-light .navbar-nav .active > .nav-link {
-  color: $turquoise_verdigris;
-}
-.navbar-light .navbar-nav .nav-link  {
-  color: $turquoise_verdigris;
-}
-
-.navbar-nav {
   display: flex;
+  align-items: center;
 }
 
-a.nav-link {
-  padding-top: 20%;
+.navbar-lewagon {
+  // [...]
+  background-color: transparent;
+  transition: 0.5s background-color ease;
 }
 
-#home {
-  padding-top: 26%;
+.navbar-lewagon-white {
+  background-color: white;
 }
-
-#hug {
-  padding-top: 28.5%;
-}
-
-// #bookings {
-//   padding-top: 21.2%;
-// }
-
-// .title {
-//   padding-left: 3.5em;
-// }
