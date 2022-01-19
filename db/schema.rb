@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2022_01_19_145458) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "evaluation"
+    t.integer "evaluation",
     t.bigint "hug_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
