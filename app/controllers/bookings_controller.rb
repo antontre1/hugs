@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
     @hug = Hug.find(params[:hug_id])
     @booking = Booking.new(booking_params)
     @booking.hug = @hug
-    @booking.user_id = @hug.user_id
+    @booking.user_id = current_user.id
     @booking.status = "planned"
     authorize @booking
     if @booking.save
@@ -28,6 +28,10 @@ class BookingsController < ApplicationController
   def index_user
     @user = current_user
     @bookings = @user.bookings
+    @hugs = @user.hugs
+    @hugs.each do |hug|
+      puts hug.bookings
+    end
     policy_scope(Booking)
   end
 

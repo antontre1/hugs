@@ -1,1 +1,24 @@
-<h1>Ici apparaîtront l'historique de mes bookings de hugs données et reçus en tant que current user </h1>
+<h1>Liste de mes bookings de hugs </h1>
+
+<h2> Ceux que j'ai proposé </h2>
+
+<ul class="list-group">
+  <% @hugs.each do |hug| %>
+    <li class="list-group-item"><%= hug.title %>
+      <% if hug.bookings == [] %>
+        <ul>Pas encore de demande pour ce hug... Love will come soon ! </ul>
+      <% else %>
+        <% hug.bookings.each do |booking| %>
+         <ul> Planifié du <%= booking.start_date %> au <%= booking.end_date %> du <%= booking.user_id %> </ul>
+        <% end %>
+      <% end %>
+  <% end %>
+</ul>
+
+<h2> Ceux que j'ai demandé </h2>
+
+<ul class="list-group">
+  <% @bookings.each do |booking| %>
+    <li class="list-group-item"> <%= booking.hug.title %> planifié du <%= booking.start_date %> au <%= booking.end_date %>
+  <% end %>
+</ul>
