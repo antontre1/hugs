@@ -10,6 +10,7 @@ const initUpdateNavbarOnScroll = () => {
       }
     });
   }
+  $('.dropdown-toggle').dropdown()
 }
 
 export { initUpdateNavbarOnScroll };
