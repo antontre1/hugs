@@ -22,6 +22,9 @@ ActiveStorage.start()
 import "bootstrap";
 
 // Internal imports, e.g:
+import { initMapbox } from '../plugins/init_mapbox';
+import { initAutocomplete } from '../plugins/init_autocomplete';
+import { initUpdateNavbarOnScroll } from '../components/navbar';
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
@@ -30,18 +33,12 @@ document.addEventListener('turbolinks:load', () => {
 });
 
 
-import { initMapbox } from '../plugins/init_mapbox';
-import { initAutocomplete } from '../plugins/init_autocomplete';
-
-
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initAutocomplete();
 })
-import { initUpdateNavbarOnScroll } from '../components/navbar';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
   initUpdateNavbarOnScroll();
 });
-
