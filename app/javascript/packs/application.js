@@ -28,17 +28,10 @@ import { initUpdateNavbarOnScroll } from '../components/navbar';
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
-  // initSelect2();
+  initUpdateNavbarOnScroll();
 });
-
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initAutocomplete();
 })
-
-document.addEventListener('turbolinks:load', () => {
-  // Call your JS functions here
-  initUpdateNavbarOnScroll();
-});
