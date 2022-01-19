@@ -29,6 +29,15 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
 });
 
+
+import { initMapbox } from '../plugins/init_mapbox';
+import { initAutocomplete } from '../plugins/init_autocomplete';
+
+
+document.addEventListener('turbolinks:load', () => {
+  initMapbox();
+  initAutocomplete();
+})
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 
 document.addEventListener('turbolinks:load', () => {

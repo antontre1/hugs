@@ -5,6 +5,7 @@ class CreateHugs < ActiveRecord::Migration[6.1]
       t.string :description
       t.string :category
       t.float :price
+      t.string :city
       t.string :address
 
       t.timestamps

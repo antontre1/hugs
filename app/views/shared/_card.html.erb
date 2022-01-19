@@ -1,18 +1,19 @@
 <div class="card-trip">
-  <%= cl_image_tag hug.photo.key %>
-  <div class="card-trip-infos">
-    <div>
-      <h2><%= hug.title %></h2>
-      <p><%= hug.description %></p>
+  <a href= <%= hug_path(hug) %> >
+    <%= cl_image_tag hug.photo.key %>
+    <div class="card-trip-infos">
+      <div>
+        <h2><%= hug.title %></h2>
+        <p><%= hug.description %></p>
+      </div>
+      <h2 class="card-trip-evaluation">
+        <%  if hug.reviews == [] %>
+          <%= "not evaluated yet!" %>
+          <% else %>
+          <%= "see evalutaion" %>
+        <% end %>
+      </h2>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
     </div>
-    <h2 class="card-trip-evaluation">
-      <%  if hug.reviews == [] %>
-        <%= "not evaluated yet!" %>
-        <% else %>
-        <%= "see evaluation" %>
-      <% end %>
-      <a href= <%= hug_path(hug) %> >See details</a>
-    </h2>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-  </div>
+  </a>
 </div>
