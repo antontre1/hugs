@@ -6,11 +6,11 @@ class HugPolicy < ApplicationPolicy
   end
 
   def edit?
-    user == record.user
+    user == record.user || user.admin
   end
 
   def destroy?
-    record.user == user
+    record.user == user || user.admin
   end
 
 end
