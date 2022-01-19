@@ -5,13 +5,12 @@
 <ul class="list-group">
     <%# Active Storage  %>
     <%# Displaying image%>
-    <%= image_tag @hug.photo, height: 300, width: 400, class: "hug_img" %>
+    <%= cl_image_tag @hug.photo.key, height: 300, width: 400, class: "hug_img" %>
     <li class="list-group-item">Title :<%= @hug.title %></li>
     <li class="list-group-item">Description :<%= @hug.description %></li>
     <li class="list-group-item">Category :<%= @hug.category %></li>
     <li class="list-group-item">User id :<%= @hug.user_id %></li>
     <li class="list-group-item">Price :<%= @hug.price %></li>
-    <li class="list-group-item">City :<%= @hug.city %></li>
     <li class="list-group-item">Address :<%= @hug.address %></li>
 </ul>
 

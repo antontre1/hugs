@@ -48,7 +48,7 @@ class HugsController < ApplicationController
   private
 
   def hug_params
-    params.require(:hug).permit(:title, :description, :category, :price, :city, :address, :photo)
+    params.require(:hug).permit(:title, :description, :category, :price, :address, :photo)
 
   end
 
