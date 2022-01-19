@@ -1,7 +1,6 @@
 const initUpdateNavbarOnScroll = () => {
   const navbar = document.querySelector('.navbar-lewagon');
-  console.log(navbar);
-  if (navbar) {
+  if (!!(navbar) && navbar.classList.contains("myhome")) {
     window.addEventListener('scroll', () => {
       if (window.scrollY >= window.innerHeight) {
         navbar.classList.add('navbar-lewagon-white');
@@ -12,5 +11,4 @@ const initUpdateNavbarOnScroll = () => {
   }
   $('.dropdown-toggle').dropdown()
 }
-
 export { initUpdateNavbarOnScroll };
