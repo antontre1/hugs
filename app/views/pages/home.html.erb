@@ -16,9 +16,8 @@
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-    <h4>Learn about the benefits of hugging.</h4>
-    <p>
-      <a href="https://www.medicinenet.com/how_do_hugs_make_you_feel/article.html" target="_blank"> Un article sur le sujet</a>
-    </p>
+    <div class="benefit">
+        <a href="https://www.healthline.com/health/hugging-benefits" style="background-image: url(<%= image_path('hugging.png') %>);" target="_blank">Learn about the benefits of hugging.</a>
+    </div>
   </div>
 </div>

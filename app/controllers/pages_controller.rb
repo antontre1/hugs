@@ -3,10 +3,11 @@ class PagesController < ApplicationController
 
   def home
     @hugs = policy_scope(Hug.all)
-    @markers = @hugs.geocoded.map do |flat|
+    @markers = @hugs.geocoded.map do |hug|
       {
-        lat: flat.latitude,
-        lng: flat.longitude
+        lat: hug.latitude,
+        lng: hug.longitude,
+        info_window: "<p>#{hug.title}</p>"
       }
     end
   end
