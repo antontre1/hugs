@@ -2,6 +2,7 @@ class Booking < ApplicationRecord
   belongs_to :hug
   belongs_to :user
   validates :start_date, :end_date, presence: true
+  validate :validation_dates
 
   def validation_dates
     if start_date && end_date
