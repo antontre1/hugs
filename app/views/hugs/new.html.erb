@@ -1,12 +1,19 @@
 <h1>Create a hug</h1>
-<%# <p>Find me in app/views/hugs/news.html.erb</p> %>
 
-<%= simple_form_for(@hug) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :category %>
-  <%= f.input :price %>
-  <%= f.input :address %>
-  <%= f.input :photo, as: :file %>
-<%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-4">
+      <form action="">
+        <%= simple_form_for(@hug) do |f| %>
+        <%= f.input :title %>
+        <%= f.input :description %>
+        <%= f.input :category %>
+        <%= f.input :price %>
+        <%= f.input :address %>
+        <%= f.input :photo, as: :file %>
+        <%= f.submit %>
+      <% end %>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_one_attached :photo
   has_many :hugs, dependent: :destroy
   has_many :bookings, dependent: :destroy
 
