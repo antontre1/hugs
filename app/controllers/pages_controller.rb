@@ -2,7 +2,6 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
-    byebug
     if params[:query].present?
       sql_query = "\
       hugs.description ILIKE :query \
