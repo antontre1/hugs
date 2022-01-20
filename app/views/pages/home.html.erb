@@ -2,6 +2,9 @@
 
 <div class="container-offer">
   <div class="card-container">
+    <% @hugs.each do |hug|%>
+      <%= render partial: "shared/card", locals: {hug: hug} %>
+    <% end %>
   </div>
   <div class="map-benefit">
     <div id="map"
