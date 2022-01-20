@@ -32,7 +32,7 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @review = Review.find(params[:id])
+    @reviews = Review.find(params[:id])
     @hug = Hug.find(params[:hug_id])
     authorize @review
   end
