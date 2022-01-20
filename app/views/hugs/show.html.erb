@@ -1,7 +1,11 @@
 <h1> <%= @hug.title %> </h1>
 
 <h2><%= link_to("Book this hug", new_hug_booking_path(@hug)) %> </h2>
-
+<div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @marker.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
 <ul class="list-group">
     <%# Active Storage  %>
     <%# Displaying image%>
@@ -9,26 +13,24 @@
     <li class="list-group-item">Title :<%= @hug.title %></li>
     <li class="list-group-item">Description :<%= @hug.description %></li>
     <li class="list-group-item">Category :<%= @hug.category %></li>
-    <li class="list-group-item">User id :<%= @hug.user_id %></li>
     <li class="list-group-item">Price :<%= @hug.price %></li>
-    <li class="list-group-item">City :<%= @hug.city %></li>
     <li class="list-group-item">Address :<%= @hug.address %></li>
 </ul>
 
 <%= link_to("Back to hugs' list", hugs_path) %>
-<% if policy(@hug).edit? %>
+  <% if policy(@hug).edit? %>
 <p>It's you hug : you can :
-  <%= link_to("Edit it", edit_hug_path(@hug)) %>
-<% end %>
-<% if policy(@hug).destroy? %>
-  <%= link_to("Destroy it", hug_path(@hug), method: :delete, data: { confirm: "Are you sure?" }) %>
-<% end %>
+    <%= link_to("Edit it", edit_hug_path(@hug)) %>
+  <% end %>
+  <% if policy(@hug).destroy? %>
+    <%= link_to("Destroy it", hug_path(@hug), method: :delete, data: { confirm: "Are you sure?" }) %>
+  <% end %>
 </p>
 
 <h3>List of bookings for <%= @hug.title %> - <%= link_to("Book this hug", new_hug_booking_path(@hug)) %>  </h3>
 <ul class="list-group">
   <% @bookings.each do |booking| %>
-    <ul> Pris du <%= booking.start_date %> au <%= booking.end_date %>
+    <ul> Taken from <%= booking.start_date %> to <%= booking.end_date %>
       <% if policy(booking).destroy? %>
         <%= link_to("It's your booking - You can cancel", booking_path(booking), method: :delete, data: { confirm: "Are you sure?" }) %>
       <% end %>

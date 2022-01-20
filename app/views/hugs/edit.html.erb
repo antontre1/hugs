@@ -1,14 +1,17 @@
-
 <h1> <%= @hug.title %> </h1>
 
-
-<%= simple_form_for(@hug) do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :category %>
-  <%= f.input :price %>
-  <%= f.input :city %>
-  <%= f.input :address %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-4">
+        <%= simple_form_for(@hug) do |f| %>
+        <%= f.input :title %>
+        <%= f.input :description %>
+        <%= f.input :category %>
+        <%= f.input :price %>
+        <%= f.input :address %>
+        <%= f.input :photo, as: :file %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>

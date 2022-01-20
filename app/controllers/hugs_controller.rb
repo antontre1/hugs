@@ -1,6 +1,12 @@
 class HugsController < ApplicationController
   def index
     @hugs = policy_scope(Hug)
+    @markers = @hugs.geocoded.map do |hug|
+      {
+        lat: hug.latitude,
+        lng: hug.longitude
+      }
+    end
   end
 
   def create
@@ -23,6 +29,7 @@ class HugsController < ApplicationController
     @hug = Hug.find(params[:id])
     @reviews = @hug.reviews
     @bookings = @hug.bookings
+    @marker = [{ lat: @hug.latitude, lng: @hug.longitude }]
     authorize @hug
   end
 
@@ -48,7 +55,7 @@ class HugsController < ApplicationController
   private
 
   def hug_params
-    params.require(:hug).permit(:title, :description, :category, :price, :city, :address, :photo)
+    params.require(:hug).permit(:title, :description, :category, :price, :address, :photo)
 
   end
 
