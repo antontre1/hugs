@@ -4,9 +4,9 @@ class PagesController < ApplicationController
   def home
     if params[:query].present?
       sql_query = "\
-      hugs.description ILIKE :query \
-      OR hugs.title ILIKE :query \
-      OR users.username ILIKE :query"
+      hugs.description @@ :query \
+      OR hugs.title @@ :query \
+      OR users.username @@ :query"
       @hugs = Hug.joins(:user).where(sql_query, query: "%#{params[:query]}%")
     else
       @hugs = policy_scope(Hug.all)
