@@ -29,6 +29,7 @@ class HugsController < ApplicationController
     @hug = Hug.find(params[:id])
     @reviews = @hug.reviews
     @bookings = @hug.bookings
+    @booking = Booking.new
     @marker = [{ lat: @hug.latitude, lng: @hug.longitude }]
     authorize @hug
   end

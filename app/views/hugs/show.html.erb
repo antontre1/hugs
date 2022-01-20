@@ -27,8 +27,10 @@
   <% end %>
 </p>
 
-<h3>List of bookings for <%= @hug.title %> - <%= link_to("Book this hug", new_hug_booking_path(@hug)) %>  </h3>
+<div data-controller="insert-in-list-booking" data-insert-in-list-booking-position-value="afterBegin">
+<h3>List of bookings for <%= @hug.title %></h3>
 <ul class="list-group">
+ <div data-insert-in-list-booking-target="items">
   <% @bookings.each do |booking| %>
     <ul> Taken from <%= booking.start_date %> to <%= booking.end_date %>
       <% if policy(booking).destroy? %>
@@ -36,9 +38,20 @@
       <% end %>
     </ul>
   <% end %>
+  </div>
 </ul>
+<%= simple_form_for([@hug, @booking], data: { insert_in_list_booking_target: 'form' , action: 'submit->insert-in-list-booking#send'}) do |f| %>
+  <h2> <%= @hug.title %> </h2>
+    <%= f.input :start_date, as: :date, html5: true %>
+    <%= f.input :end_date, as: :date, html5: true %>
+  <%= f.button :submit %>
+<% end %>
+</div>
+
+
 
 <h3>List of reviews for <%= @hug.title %> - <%= link_to("Create a new review",new_hug_review_path(@hug))%> </h3>
+
 <ul class="list-group">
   <% @reviews.each do |review| %>
     <ul> <%= review.evaluation %> - <%= review.description %>
