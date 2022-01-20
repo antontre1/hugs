@@ -1,11 +1,6 @@
 <%= render "shared/banner" %>
 
 <div class="container-offer">
-  <%
-=begin%>
- <%= link_to "What hug will you choose?", hugs_path, class: "nav-link", id: "hug" %>
-<%
-=end%>
   <div class="card-container">
     <% @hugs.each do |hug|%>
       <%= render partial: "shared/card", locals: {hug: hug} %>
