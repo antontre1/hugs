@@ -3,10 +3,8 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-sm-4">
-      <form action="">
         <%= simple_form_for(@hug) do |f| %>
         <%= f.input :title %>
-        <%= f.input :user_id %>
         <%= f.input :description %>
         <%= f.input :category %>
         <%= f.input :price %>
@@ -14,7 +12,6 @@
         <%= f.input :photo, as: :file %>
         <%= f.submit %>
       <% end %>
-      </form>
     </div>
   </div>
 </div>
