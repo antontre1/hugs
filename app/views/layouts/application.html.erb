@@ -15,7 +15,8 @@
 
   <body>
     <%= render "shared/navbar"%>
-    <div class="div-wrapper">
+    <% home_style = action_name == 'home' ? "home" : "" %>
+    <div class="div-wrapper <%=home_style %>">
       <%= yield %>
     </div>
     <%= render "shared/flashes" %>
