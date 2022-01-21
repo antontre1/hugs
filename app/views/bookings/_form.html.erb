@@ -1,0 +1,9 @@
+<%= simple_form_for([ hug, booking ],
+                    data: {
+                      insert_in_list_booking_target: 'form',
+                      action: 'submit->insert-in-list-booking#send'
+                    }) do |f| %>
+  <%= f.input :start_date, as: :date, html5: true %>
+  <%= f.input :end_date, as: :date, html5: true %>
+  <%= f.button :submit %>
+<% end %>
