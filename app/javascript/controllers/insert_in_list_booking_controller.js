@@ -4,6 +4,7 @@ import { Controller } from "stimulus";
 export default class extends Controller {
   static targets = ['items', 'form'];
   static values = { position: String } // ce que l'on retourne ? à verif
+
   send(event) {
   event.preventDefault();
   fetch(this.formTarget.action, {
@@ -15,6 +16,7 @@ export default class extends Controller {
     .then((data) => {
        if (data.inserted_item) {
         this.itemsTarget.insertAdjacentHTML("beforeend", data.inserted_item);
+        console.log(this.itemsTarget)
       }
       this.formTarget.outerHTML = data.form;
   });

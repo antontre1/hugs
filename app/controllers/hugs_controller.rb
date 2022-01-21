@@ -4,7 +4,8 @@ class HugsController < ApplicationController
     @markers = @hugs.geocoded.map do |hug|
       {
         lat: hug.latitude,
-        lng: hug.longitude
+        lng: hug.longitude,
+        info_window: "<p>#{hug.title}</p>"
       }
     end
   end
@@ -30,7 +31,13 @@ class HugsController < ApplicationController
     @reviews = @hug.reviews
     @bookings = @hug.bookings
     @booking = Booking.new
-    @marker = [{ lat: @hug.latitude, lng: @hug.longitude }]
+    # @marker = [{ lat: @hug.latitude, lng: @hug.longitude, info_window: "<p>#{hug.title}</p>"}]
+    @markers =
+      [{
+        lat: @hug.latitude,
+        lng: @hug.longitude,
+        info_window: "<p>#{@hug.title}</p>"
+      }]
     authorize @hug
   end
 
@@ -57,7 +64,6 @@ class HugsController < ApplicationController
 
   def hug_params
     params.require(:hug).permit(:title, :description, :category, :price, :address, :photo)
-
   end
 
 end
