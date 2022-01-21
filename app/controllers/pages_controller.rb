@@ -2,12 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
-    if params[:query].present?
-      # sql_query = "\
-      # hugs.description @@ :query \
-      # OR hugs.title @@ :query \
-      # OR users.username @@ :query"
-      # @hugs = Hug.joins(:user).where(sql_query, query: "%#{params[:query]}%")
+    if params[:query].present
       @hugs = Hug.global_search("%#{params[:query]}%")
     else
       @hugs = policy_scope(Hug.all)
