@@ -1,4 +1,15 @@
+<p> C'est le bololo la navbar
+Je mets ça juste pour avoir de la place </p>
+
+
 <h1> <%= @hug.title %> </h1>
+
+<h2> <% @hug.mean %>
+  <% if @hug.mean.class == 1.class %>
+      <%  @hug.mean.times do %> &bigstar; <% end %>
+      <%  (5 - @hug.mean).times do %> &star; <% end %>
+    <% end %>
+</h2>
 
 <h2><%= link_to("Book this hug", new_hug_booking_path(@hug)) %> </h2>
 <div id="map"
@@ -54,7 +65,10 @@
 
 <ul class="list-group">
   <% @reviews.each do |review| %>
-    <ul> <%= review.evaluation %> - <%= review.description %>
+    <ul> <%  review.evaluation.times do %> &bigstar; <% end %>
+      <%  (5 - review.evaluation).times do %> &star; <% end %>
+
+       - <%= review.description %>
       <% if policy(review).destroy? %> <%= link_to("It's your review - You can delete it", hug_review_path(review),  method: :delete, data: { confirm: "Are you sure?" }) %>
       <% end %>
     </ul>

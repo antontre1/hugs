@@ -6,13 +6,9 @@
         <h2><%= hug.title %></h2>
         <p><%= hug.description %></p>
       </div>
-      <h2 class="card-trip-evaluation">
-        <%  if hug.reviews == [] %>
-          <%= "not evaluated yet!" %>
-          <% else %>
-          <%= "see evalutaion" %>
-        <% end %>
-      </h2>
+       <h2 class="card-trip-evaluation">
+          <%= hug.mean%> <% if hug.mean.class == 1.class %> /10<% end %>
+        </h2>
       <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
     </div>
   </a>
