@@ -3,8 +3,6 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-sm-4">
-      <form action="">
-
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-inputs">
           <%= f.input :email,
@@ -21,7 +19,6 @@
           <%# <%= f.button :submit, "Log in" %>
           <div class="btn btn-gradient" href="#">Log in</a>
           </div>
-     </form>
      <%= render "devise/shared/links" %>
     </div>
   </div>
