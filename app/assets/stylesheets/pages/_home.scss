@@ -3,6 +3,12 @@ body {
   background: $pink_salmon;
 }
 
+.toto {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
 .container-offer {
   display: flex;
   justify-content: space-evenly;
