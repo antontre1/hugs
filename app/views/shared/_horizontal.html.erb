@@ -12,20 +12,20 @@
           <h4><%= hug.price %>€</h4>
         </div>
         <div>
-          <h3>
+          <h2>
             <% if hug.mean.class == 1.class %>
               <%  hug.mean.times do %> &bigstar; <% end %>
               <%  (5 - hug.mean).times do %> &star; <% end %>
             <% else %>
               <%= hug.mean%>
             <% end %>
-          </h3>
+          </h2>
           <% if policy(hug).edit? %>
             <%= link_to("Edit", edit_hug_path(hug)) %>
           <% end %>
           <% if policy(hug).destroy? %>
             <%= link_to("Destroy", hug_path(hug), method: :delete, data: { confirm: "Are you sure?" }) %>
-          <% end %></li>
+        <% end %></li>
         </div>
       </div>
     </div>
