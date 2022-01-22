@@ -1,0 +1,61 @@
+
+.horizontal {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.horizontal:link {
+  text-decoration: none;
+}
+
+.horizontal-infos {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.horizontal img {
+  height: 120px;
+  width: 120px;
+  object-fit: cover;
+}
+
+.horizontal h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+  color: #F98176;
+  text-decoration: none;
+}
+
+.horizontal h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  color: #F98176;
+}
+
+.horizontal p {
+  font-size: 15px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.horizontal h4 {
+  font-size: 10px;
+  font-style: italic;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}

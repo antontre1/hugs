@@ -5,21 +5,20 @@
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
-<ul class="list-group">
-  <% @hugs.each do |hug| %>
-    <li class="list-group-item"><%= link_to(hug.title, hug_path(hug)) %> - Category : <%= hug.category %> - <%= hug.description %> - <%= hug.mean %> -
-    <% if hug.mean.class == 1.class %>
-      <%  hug.mean.times do %> &bigstar; <% end %>
-      <%  (5 - hug.mean).times do %> &star; <% end %>
-    <% end %>
-    <% if policy(hug).edit? %>
-      <%= link_to("Edit", edit_hug_path(hug)) %>
-    <% end %>
-    <% if policy(hug).destroy? %>
-      <%= link_to("Destroy", hug_path(hug), method: :delete, data: { confirm: "Are you sure?" }) %>
-    <% end %></li>
-  <% end %>
-</ul>
 
-<p>
-<%= link_to("Create a hug",new_hug_path) %> --- <%= link_to("Back to main page",root_path) %> </p>
+  <div class="container">
+    <% @hugs.each do |hug|%>
+      <ul>
+      <%= render partial: "shared/horizontal", locals: {hug: hug} %>
+      </ul>
+    <% end %>
+
+    <div class="row justify-content-center">
+      <%= link_to "Create a hug", new_hug_path, class: "btn btn-gradient" %>
+    </div>
+
+    <div class="row justify-content-center">
+      <%= link_to "Back to home page", root_path, class: "btn btn-ghost" %>
+    </div>
+
+  </div>
