@@ -1,24 +1,54 @@
-<h1>Liste de mes bookings de hugs </h1>
-
-<h2> Ceux que j'ai proposé </h2>
-
-<ul class="list-group">
-  <% @hugs.each do |hug| %>
-    <li class="list-group-item"><%= hug.title %>
-      <% if hug.bookings == [] %>
-        <ul>Pas encore de demande pour ce hug... Love will come soon ! </ul>
-      <% else %>
-        <% hug.bookings.each do |booking| %>
-         <ul> Planifié du <%= booking.start_date %> au <%= booking.end_date %> du <%= booking.user_id %> </ul>
-        <% end %>
+<div class="d-flex">
+  <div class="booked">
+      <h1>Hugs I've given</h1>
+      <% @given_hugs.each do |hug| %>
+        <div class="card-trip">
+          <a href= <%= hug_path(hug) %> >
+            <%= cl_image_tag hug.photo.key %>
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= hug.title %></h2>
+                <p><%= hug.description %></p>
+              </div>
+              <h2 class="card-trip-evaluation">
+                  <%= hug.mean%> <% if hug.mean.class == 1.class %> /10<% end %>
+                </h2>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+              <% if hug.bookings.empty? %>
+                <p>Pas encore de demande pour ce hug</p>
+              <% else %>
+                <% hug.bookings.each do |booking| %>
+                  <li> Planifié du <%= booking.start_date %> au <%= booking.end_date %> du <%= booking.user_id %> </li>
+                <% end %>
+              <% end %>
+            </div>
+          </a>
+        </div>
       <% end %>
-  <% end %>
-</ul>
 
-<h2> Ceux que j'ai demandé </h2>
+  </div>
+  <div class="container-card pending">
+    <h1>Hugs I've received</h1>
+    <ul class="list-group">
+      <% @my_bookings.each do |booking| %>
+      <div class="card-trip">
+        <a href= <%= hug_path(booking.hug) %> >
+      <%= cl_image_tag booking.hug.photo.key %>
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= booking.hug.title %></h2>
+          <p><%= booking.hug.description %></p>
+        </div>
+        <h2 class="card-trip-evaluation">
+            <%= booking.hug.mean%> <% if booking.hug.mean.class == 1.class %> /10<% end %>
+          </h2>
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+        <p> Planifié du <%= booking.start_date %> au <%= booking.end_date %></p>
+      </div>
+    </a>
+  </div>
 
-<ul class="list-group">
-  <% @bookings.each do |booking| %>
-    <li class="list-group-item"> <%= booking.hug.title %> planifié du <%= booking.start_date %> au <%= booking.end_date %>
-  <% end %>
-</ul>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -32,11 +32,8 @@ class BookingsController < ApplicationController
 
   def index_user
     @user = current_user
-    @bookings = @user.bookings
-    @hugs = @user.hugs
-    @hugs.each do |hug|
-      puts hug.bookings
-    end
+    @my_bookings = @user.bookings
+    @given_hugs = @user.hugs
     policy_scope(Booking)
   end
 
