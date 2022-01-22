@@ -45,7 +45,7 @@ Je mets ça juste pour avoir de la place </p>
   <% @bookings.each do |booking| %>
     <ul> Taken from <%= booking.start_date %> to <%= booking.end_date %>
       <% if policy(booking).destroy? %>
-        <%= link_to("It's your booking - You can cancel", booking_path(booking), method: :delete, data: { confirm: "Are you sure?" }) %>
+        <%= link_to("It's your booking - You can cancel", booking, method: :delete, remote: true, data: { confirm: "Are you sure?" }) %>
       <% end %>
     </ul>
   <% end %>
