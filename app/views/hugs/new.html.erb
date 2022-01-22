@@ -1,17 +1,24 @@
-<h1>Create a hug</h1>
+<h1>
+  <div class="row justify-content-center"> Create a hug </div>
+</h1>
+
 
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-12 col-sm-4">
+    <div class="col-16 col-sm-6">
         <%= simple_form_for(@hug) do |f| %>
-        <%= f.input :title %>
-        <%= f.input :description %>
-        <%= f.input :category %>
-        <%= f.input :price %>
-        <%= f.input :address %>
-        <%= f.input :photo, as: :file %>
-        <%= f.submit %>
+        <%= f.input :title, label: "Your hug's title", placeholder: 'Ex. My lovable hug' %>
+        <%= f.input :description, label: "Detailed description", placeholder: 'Ex. A hug full of love and shared mindset'  %>
+        <%= f.input :category, label: "Type of hug", placeholder: 'Ex. Tender'  %>
+        <%= f.input :price, label: "Price", placeholder: 'Please type a number', error: 'Please type a number'  %>
+        <%= f.input :address, label: "Adress to share the hug", placeholder: 'Ex. 1 villa Gaudelet'  %>
+        <%= f.input :photo, as: :file, label: "Picture to illustrate the hug", placeholder: 'Share an inspiring picture'  %>
+        <div class="row justify-content-center">
+          <%= f.button :submit, "Create this hug" , class: 'btn btn-gradient' %>
+        </div>
       <% end %>
+    </div>
+
     </div>
   </div>
 </div>
