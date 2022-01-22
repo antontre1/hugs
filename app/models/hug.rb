@@ -16,4 +16,14 @@ class Hug < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+  def mean
+    sum = 0
+    reviews.each do |review| sum = sum + review.evaluation end
+    if reviews.length == 0
+      return "No review yet"
+    else
+      return sum / reviews.length
+    end
+  end
+
 end

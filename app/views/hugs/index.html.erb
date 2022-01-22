@@ -7,7 +7,11 @@
 </div>
 <ul class="list-group">
   <% @hugs.each do |hug| %>
-    <li class="list-group-item"><%= link_to(hug.title, hug_path(hug)) %> - Category : <%= hug.category %> - <%= hug.description %>
+    <li class="list-group-item"><%= link_to(hug.title, hug_path(hug)) %> - Category : <%= hug.category %> - <%= hug.description %> - <%= hug.mean %> -
+    <% if hug.mean.class == 1.class %>
+      <%  hug.mean.times do %> &bigstar; <% end %>
+      <%  (5 - hug.mean).times do %> &star; <% end %>
+    <% end %>
     <% if policy(hug).edit? %>
       <%= link_to("Edit", edit_hug_path(hug)) %>
     <% end %>

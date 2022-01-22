@@ -12,10 +12,15 @@ class BookingsController < ApplicationController
     @booking.user_id = current_user.id
     @booking.status = "planned"
     authorize @booking
-    if @booking.save
-      redirect_to hug_path(@hug)
-    else
-      render :new
+
+    respond_to do |format|
+      if @booking.save
+        format.html { redirect_to hug_path(@hug) }
+        format.json
+      else
+        format.html { render :new }
+        format.json
+      end
     end
   end
 
