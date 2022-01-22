@@ -1,76 +1,87 @@
-<p> C'est le bololo la navbar
-Je mets ça juste pour avoir de la place </p>
-
-
-<h1> <%= @hug.title %> </h1>
-
-<h2> <% @hug.mean %>
-  <% if @hug.mean.class == 1.class %>
-      <%  @hug.mean.times do %> &bigstar; <% end %>
-      <%  (5 - @hug.mean).times do %> &star; <% end %>
-    <% end %>
-</h2>
-
-<h2><%= link_to("Book this hug", new_hug_booking_path(@hug)) %> </h2>
-<div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
-<ul class="list-group">
-    <%# Active Storage  %>
-    <%# Displaying image%>
-    <%= cl_image_tag @hug.photo.key, height: 300, width: 400, class: "hug_img" %>
-    <li class="list-group-item">Title :<%= @hug.title %></li>
-    <li class="list-group-item">Description :<%= @hug.description %></li>
-    <li class="list-group-item">Category :<%= @hug.category %></li>
-    <li class="list-group-item">Price :<%= @hug.price %></li>
-    <li class="list-group-item">Address :<%= @hug.address %></li>
-</ul>
-
-<%= link_to("Back to hugs' list", hugs_path) %>
-  <% if policy(@hug).edit? %>
-<p>It's you hug : you can :
-    <%= link_to("Edit it", edit_hug_path(@hug)) %>
-  <% end %>
-  <% if policy(@hug).destroy? %>
-    <%= link_to("Destroy it", hug_path(@hug), method: :delete, data: { confirm: "Are you sure?" }) %>
-  <% end %>
-</p>
-
-<div data-controller="insert-in-list-booking" data-insert-in-list-booking-position-value="afterBegin">
-<h3>List of bookings for <%= @hug.title %></h3>
-<ul class="list-group">
- <div data-insert-in-list-booking-target="items">
-  <% @bookings.each do |booking| %>
-    <ul> Taken from <%= booking.start_date %> to <%= booking.end_date %>
-      <% if policy(booking).destroy? %>
-        <%= link_to("It's your booking - You can cancel", booking, method: :delete, remote: true, data: { confirm: "Are you sure?" }) %>
-      <% end %>
-    </ul>
-  <% end %>
+<div class="container">
+  <div class="hug-prez">
+    <div class="boxandhug">
+      <div class="boxtophug">
+        <div id="hug-title"><%= @hug.title %></div>
+        <h2><% @hug.mean %>
+          <% if @hug.mean.class == 1.class %>
+              <%  @hug.mean.times do %> &bigstar; <% end %>
+              <%  (5 - @hug.mean).times do %> &star; <% end %>
+          <% else %>
+              not evaluated
+            <% end %></h2>
+        <h2><%= link_to("Book this hug", new_hug_booking_path(@hug)) %></h2>
+      </div>
+      <div class="hugavatarmap">
+        <div class = "hugimage" style="background-image: url('<%= cl_image_path @hug.photo.key %>');%>">
+        <% if @hug.user.photo.attached? %>
+          <%= cl_image_tag @hug.user.photo.key, class: "img-creator-avatar" %>
+        <% else %>
+          <%= image_tag('avatar.png') %>
+        <% end %>
+        </div>
+        <div id="map"
+            style="height: 400px;"
+            data-markers="<%= @markers.to_json %>"
+            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
+    </div>
   </div>
-</ul>
-<%= simple_form_for([@hug, @booking], data: { insert_in_list_booking_target: 'form' , action: 'submit->insert-in-list-booking#send'}) do |f| %>
-  <h2> <%= @hug.title %> </h2>
-    <%= f.input :start_date, as: :date, html5: true %>
-    <%= f.input :end_date, as: :date, html5: true %>
-  <%= f.button :submit %>
-<% end %>
-</div>
-
-
-
-<h3>List of reviews for <%= @hug.title %> - <%= link_to("Create a new review",new_hug_review_path(@hug))%> </h3>
-
-<ul class="list-group">
-  <% @reviews.each do |review| %>
-    <ul> <%  review.evaluation.times do %> &bigstar; <% end %>
-      <%  (5 - review.evaluation).times do %> &star; <% end %>
-
-       - <%= review.description %>
-      <% if policy(review).destroy? %> <%= link_to("It's your review - You can delete it", hug_review_path(review),  method: :delete, data: { confirm: "Are you sure?" }) %>
+  <div class="detailsandbooking">
+    <div class="hug-details-super">
+      <div class="hug-details">
+          <div class="row hug-title"><%= @hug.title %></div>
+          <div class="row hug-description">Description: <%= @hug.description %></div>
+          <div class="row hug-category">Category: <%= @hug.category %></div>
+          <div class="row hug-price">Price: <%= @hug.price %></div>
+          <div class="row hug-address">Address: <%= @hug.address %></div>
+      </div>
+      <div class="actions">
+                <% if policy(@hug).edit? %>
+      <p>It's you hug : you can :
+          <%= link_to("Edit it", edit_hug_path(@hug)) %>
+        <% end %>
+        <% if policy(@hug).destroy? %>
+          <%= link_to("Destroy it", hug_path(@hug), method: :delete, data: { confirm: "Are you sure?" }) %>
+        <% end %>
+    </p>
+      </div>
+    </div>
+    <div class="hug-booking" data-controller="insert-in-list-booking" data-insert-in-list-booking-position-value="afterBegin">
+      <h3 id="booking-list-title">List of bookings for <%= @hug.title %></h3>
+      <ul class="list-group">
+        <div data-insert-in-list-booking-target="items">
+          <% @bookings.each do |booking| %>
+            <ul> Taken from <%= booking.start_date %> to <%= booking.end_date %>
+              <% if policy(booking).destroy? %>
+                <%= link_to("delete", booking, method: :delete, remote: true) %>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      </ul>
+      <%= simple_form_for([@hug, @booking], data: { insert_in_list_booking_target: 'form' , action: 'submit->insert-in-list-booking#send'}) do |f| %>
+          <%= f.input :start_date, as: :date, html5: true %>
+          <%= f.input :end_date, as: :date, html5: true %>
+        <%= f.button :submit, class: 'btn btn-gradient' %>
       <% end %>
-    </ul>
-  <% end %>
-</ul>
+    </div>
+  </div>
+
+
+  <h3>List of reviews for <%= @hug.title %> - <%= link_to("Create a new review",new_hug_review_path(@hug))%> </h3>
+
+  <ul class="list-group">
+    <% @reviews.each do |review| %>
+      <ul> <%  review.evaluation.times do %> &bigstar; <% end %>
+        <%  (5 - review.evaluation).times do %> &star; <% end %>
+
+        - <%= review.description %>
+        <% if policy(review).destroy? %> <%= link_to("delete", hug_review_path(review)) %>
+        <% end %>
+      </ul>
+    <% end %>
+  </ul>
+    <%= link_to("Back to hugs' list", hugs_path) %>
+</div>
