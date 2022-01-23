@@ -25,6 +25,8 @@ import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
+import { watchAllBookingsElement } from '../components/bookings';
+
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
@@ -35,5 +37,7 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initAutocomplete();
 })
+
+watchAllBookingsElement();
 
 import "controllers"
