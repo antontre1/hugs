@@ -45,6 +45,12 @@ class BookingsController < ApplicationController
     redirect_to hug_path(hug_id)
   end
 
+  def destroy_ajax
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.destroy
+  end
+
 
   private
 

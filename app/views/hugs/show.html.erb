@@ -13,11 +13,11 @@
         <h2><%= link_to("Book this hug", new_hug_booking_path(@hug)) %></h2>
       </div>
       <div class="hugavatarmap">
-        <div class = "hugimage" style="background-image: url('<%= cl_image_path @hug.photo.key %>');%>">
+        <div class = "hugimage" style="background-image: url('<%= cl_image_path @hug.photo.key %>')">
         <% if @hug.user.photo.attached? %>
           <%= cl_image_tag @hug.user.photo.key, class: "img-creator-avatar" %>
         <% else %>
-          <%= image_tag('avatar.png') %>
+          <%= image_tag('avatar.png', class: "img-creator-avatar" )%>
         <% end %>
         </div>
         <div id="map"
@@ -51,13 +51,9 @@
     <div class="hug-booking" data-controller="insert-in-list-booking" data-insert-in-list-booking-position-value="afterBegin">
       <h3 id="booking-list-title">List of bookings for <%= @hug.title %></h3>
       <ul class="list-group">
-        <div data-insert-in-list-booking-target="items">
+        <div data-insert-in-list-booking-target="items" id="list-booking">
           <% @bookings.each do |booking| %>
-            <ul> Taken from <%= booking.start_date %> to <%= booking.end_date %>
-              <% if policy(booking).destroy? %>
-                <%= link_to("delete", booking, method: :delete, remote: true) %>
-              <% end %>
-            </ul>
+            <%= render partial: "booking", locals: {booking: booking} %>
           <% end %>
         </div>
       </ul>
@@ -65,7 +61,7 @@
           <%= f.input :start_date, as: :date, html5: true %>
           <%= f.input :end_date, as: :date, html5: true %>
         <%= f.button :submit, class: 'btn btn-gradient' %>
-      
+
       <% end %>
     </div>
   </div>

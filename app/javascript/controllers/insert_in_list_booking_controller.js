@@ -7,6 +7,7 @@ export default class extends Controller {
 
   send(event) {
   event.preventDefault();
+  console.log(this.formTarget.action);
   fetch(this.formTarget.action, {
     method: 'POST',
     headers: { 'Accept': "application/json", 'X-CSRF-Token': csrfToken() },
@@ -16,7 +17,6 @@ export default class extends Controller {
     .then((data) => {
        if (data.inserted_item) {
         this.itemsTarget.insertAdjacentHTML("beforeend", data.inserted_item);
-        console.log(this.itemsTarget)
       }
       this.formTarget.outerHTML = data.form;
   });

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [ :index, :new, :create, :destroy ]
     resources :reviews, only: [ :index, :new, :show, :create, :destroy ]
   end
+  delete '/booking/ajax/:id', to: 'bookings#destroy_ajax'
   resources :bookings, only: [:destroy]
   get "my_bookings", to: "bookings#index_user", as: :index_user
   resources :users, only: :show

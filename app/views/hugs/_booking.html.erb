@@ -1,5 +1,3 @@
-<ul id="booking-<%= booking.id %>"> Taken from <%= booking.start_date %> to <%= booking.end_date %>
-  <% if policy(booking).destroy? %>
-    <%= link_to("delete", booking, method: :delete, remote: true, data: { confirm: "Are you sure?" }) %>
-  <% end %>
+ <ul class="facile">Taken from <%= booking.start_date %> to <%= booking.end_date %>
+  <button class="booking-element" id="booking-<%= booking.id %>" type="button"> delete </button>
 </ul>

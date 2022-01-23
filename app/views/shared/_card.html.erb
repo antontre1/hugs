@@ -9,7 +9,11 @@
        <h2 class="card-trip-evaluation">
           <%= hug.mean%> <% if hug.mean.class == 1.class %> /10<% end %>
         </h2>
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+        <% if hug.user.photo.attached? %>
+          <%= cl_image_tag hug.user.photo.key, class: "card-trip-user avatar-bordered" %>
+        <% else %>
+          <%= image_tag('avatar.png', class: "card-trip-user avatar-bordered" )%>
+        <% end %>
     </div>
   </a>
 </div>

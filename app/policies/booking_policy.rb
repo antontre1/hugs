@@ -9,4 +9,7 @@ class BookingPolicy < ApplicationPolicy
     true
   end
 
+  def destroy_ajax?
+	  true
+  end
 end
