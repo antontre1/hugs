@@ -30,12 +30,9 @@ import { watchAllBookingsElement } from '../components/bookings';
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
-  initUpdateNavbarOnScroll();
-});
-
-document.addEventListener('turbolinks:load', () => {
-  initMapbox();
   initAutocomplete();
+  initMapbox();
+  initUpdateNavbarOnScroll();
 })
 
 watchAllBookingsElement();
